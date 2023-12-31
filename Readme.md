@@ -6,11 +6,6 @@ Derive schema from the json file, somehow...
 This is a stupid idea.
 
 Steps:
-* spin up db server (optional)
-    * is docker truly necessary
-* create new db
-* read json file(s?) and determine schema. somehow.
-    * how will it determine FKs, PKs, etc? lol
-    * lol
-* create tables and shit
-* load data into db
+* generate initialization scripts
+* start docker container with init script copied in
+* shell
