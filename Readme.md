@@ -4,9 +4,9 @@ quick script to create a toy db out of a sql file
 
 # Requirements:
 
--[ ] bash
--[ ] docker
--[ ] docker compose
+- [ ] bash
+- [ ] docker
+- [ ] docker compose
 
 
 # example:
