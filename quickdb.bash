@@ -6,13 +6,15 @@ then
     exit -1
 fi
 
+exstat=0
 export DB_SCRIPT=$1
 export CONTAINER_NAME=quickdb-$RANDOM
-echo "starting shell"
-# docker ps
-docker compose -f docker-compose.yaml up shell &&
-# docker logs $CONTAINER_NAME
-echo "starting postgres" &&
-# docker ps
-docker exec -it $CONTAINER_NAME psql -U postgres
+docker compose -f docker-compose.yaml up wait-for-db && docker exec -it $CONTAINER_NAME psql -U postgres 
+
+if [ $? -ne 0 ]
+then
+  docker logs $CONTAINER_NAME
+  exstat=-1
+fi
 docker compose -f docker-compose.yaml down -v
+exit $exstat

@@ -14,7 +14,7 @@ services:
     ports:
       - 5432:5432
   
-  shell:
+  wait-for-db:
     image: alpine
     depends_on:
       db:
