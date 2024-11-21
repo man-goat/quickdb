@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres
+    volumes:
+      - $DB_SCRIPT:/docker-entrypoint-initdb.d/init.sql
+    container_name: $CONTAINER_NAME
+    environment:
+      - POSTGRES_PASSWORD=password
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 200ms
+      start_period: 500ms
+    ports:
+      - 5432:5432
+  
+  shell:
+    image: alpine
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
