@@ -2,9 +2,16 @@
 
 quick script to create a toy db out of a sql file
 
-## example:
+# Requirements:
+
+-[ ] bash
+-[ ] docker
+-[ ] docker compose
+
+
+# example:
 ```
-./quickdb initdb.example.sql
+./quickdb.bash initdb.example.sql
 ...
 postgres=# select * from tablea;
  id | mark |  name
